@@ -1,0 +1,16 @@
+.nav__item {
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.nav__item:hover {
+  text-decoration: underline;
+}
+
+.nav__item:active {
+  color: #42b983;
+}
+
+.avatar:hover {
+  text-decoration: none;
+}
