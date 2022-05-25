@@ -1,0 +1,9 @@
+.main {
+  flex: 1;
+  min-height: 80vh;
+}
+
+.bg-dark {
+  padding-top: 1rem;
+  background-color: #12002b;
+}

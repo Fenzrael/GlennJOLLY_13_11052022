@@ -4,12 +4,16 @@ import EnterpriseFeatures from "../../components/EnterpriseFeatures/EnterpriseFe
 import Main from "../../components/Main/Main";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
+import "./Home.css";
 
 const Home = () => {
   return (
     <>
       <Header />
-      <Main />
+      <main className="main">
+        <Banner />
+        <EnterpriseFeatures />
+      </main>
       <Footer />
     </>
   );
