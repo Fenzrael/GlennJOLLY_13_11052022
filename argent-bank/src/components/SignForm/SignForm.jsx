@@ -1,12 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./SignForm.css";
 import axios from "axios";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import userSlice, {
+import {
   sendHeaderAuthorization,
   sendTokenAPI,
+  getRequestStatus,
 } from "../../feature/user.slice";
 
 const SignForm = () => {
@@ -18,8 +19,8 @@ const SignForm = () => {
   const errorUser = document.querySelector(".errorUser");
   console.log(errorUser);
   const dispatch = useDispatch();
-  const headerA = useSelector(({ user }) => user.user.headerAuth);
-  console.log(headerA);
+  const status = useSelector(({ user }) => user.user.status);
+  console.log(status);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ const SignForm = () => {
     axios.post("http://localhost:3001/api/v1/user/login", data).then((res) => {
       // Stockage du token dans le store
       dispatch(sendTokenAPI(res.data.body.token));
-
+      dispatch(getRequestStatus(res.data.status));
       axios
         .post(
           "http://localhost:3001/api/v1/user/profile",
@@ -46,15 +47,19 @@ const SignForm = () => {
         .then((res2) => {
           dispatch(sendHeaderAuthorization(res2.data.body));
         });
-      formRef.current.reset();
+      /* formRef.current.reset(); */
     });
 
-    if (headerA !== 200 || headerA === null || headerA === undefined) {
+    if (status !== 200 || status === null || status === undefined) {
       errorUser.innerHTML = "veuillez bien renseigner un email valide";
     } else {
       return (errorUser.innerHTML = "");
     }
   };
+
+  if (status === 200) {
+    return <Navigate to="/profile" />;
+  }
 
   return (
     <section className="sign-in-content">
@@ -77,8 +82,8 @@ const SignForm = () => {
         </div>
         {/* static button form submit */}
         {/* <NavLink to="/profile" className="sign-in-button">
-          Sign In
-        </NavLink> */}
+            Sign In
+          </NavLink> */}
         {/* button for dynamic datas */}
         <button className="sign-in-button">Sign In</button>
       </form>

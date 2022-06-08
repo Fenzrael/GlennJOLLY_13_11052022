@@ -11,6 +11,10 @@
   color: #42b983;
 }
 
+.avatar {
+  margin-left: 1rem;
+}
+
 .avatar:hover {
   text-decoration: none;
 }

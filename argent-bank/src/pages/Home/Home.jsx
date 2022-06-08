@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Banner from "../../components/Banner/Banner";
 import EnterpriseFeatures from "../../components/EnterpriseFeatures/EnterpriseFeatures";
 import Footer from "../../components/Footer/Footer";
