@@ -15,3 +15,5 @@ const userAccountData = [
     balanceStatus: "Current Balance",
   },
 ];
+
+export default userAccountData;

@@ -50,11 +50,11 @@ const SignForm = () => {
       /* formRef.current.reset(); */
     });
 
-    if (status !== 200 || status === null || status === undefined) {
+    /* if (status !== 200 || status === null || status === undefined) {
       errorUser.innerHTML = "veuillez bien renseigner un email valide";
     } else {
       return (errorUser.innerHTML = "");
-    }
+    } */
   };
 
   if (status === 200) {
